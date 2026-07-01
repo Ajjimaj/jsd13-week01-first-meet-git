@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Tags Demo</title>
+</head>
+<body>
+
+  <header>
+    <h1>HTML Tags Demo</h1>
+    <nav>
+      <ul>
+        <li><a href="#text">Text</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#media">Links &amp; Media</a></li>
+        <li><a href="#table">Table</a></li>
+        <li><a href="#form">Form</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Text Elements -->
+    <section id="text">
+      <h2>Text Elements</h2>
+
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
+
+      <p>This is a paragraph. It contains regular text content. Below you will find inline text tags demonstrated.</p>
+
+      <p>
+        <strong>Bold text using strong</strong>,
+        <em>italic text using em</em>,
+        <small>small text</small>,
+        <code>inline code</code>.
+      </p>
+
+      <p>Line break:<br>Text after a line break.</p>
+
+      <hr>
+
+      <blockquote>
+        This is a blockquote. It is used to quote content from another source.
+      </blockquote>
+
+      <pre>
+function hello() {
+  console.log("Hello, world!");
+}
+      </pre>
+    </section>
+
+    <!-- Lists -->
+    <section id="lists">
+      <h2>Lists</h2>
+
+      <h3>Ordered List</h3>
+      <ol>
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ol>
+
+      <h3>Unordered List</h3>
+      <ul>
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Cherries</li>
+      </ul>
+
+      <h3>Description List</h3>
+      <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language — the standard language for web pages.</dd>
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets — used to style HTML content.</dd>
+      </dl>
+    </section>
+
+    <!-- Links and Images -->
+    <section id="media">
+      <h2>Links &amp; Images</h2>
+
+      <p>Visit <a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a> to learn more about HTML.</p>
+
+      <figure>
+        <img src="https://placehold.co/600x200" alt="Placeholder image showing a gray rectangle">
+        <figcaption>This is a figure caption describing the image above.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Table -->
+    <section id="table">
+      <h2>Table</h2>
+
+      <table>
+        <caption>Sample Students Table</caption>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alice</td>
+            <td>Math</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Bob</td>
+            <td>Science</td>
+            <td>B+</td>
+          </tr>
+          <tr>
+            <td>Charlie</td>
+            <td>History</td>
+            <td>A-</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Form -->
+    <section id="form">
+      <h2>Form</h2>
+
+      <form>
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <div>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name">
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+          </div>
+
+          <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age">
+          </div>
+
+          <div>
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+              <option value="">-- Select --</option>
+              <option value="jp">Japan</option>
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+
+          <div>
+            <button type="submit">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Audio and Video -->
+    <section id="audio-video">
+      <h2>Audio &amp; Video</h2>
+
+      <h3>Audio</h3>
+      <audio controls>
+        <source src="sample.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <h3>Video</h3>
+      <video controls width="320">
+        <source src="sample.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+    </section>
+
+    <aside>
+      <h3>Did You Know?</h3>
+      <p>HTML stands for <strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage. It was first released in 1993.</p>
+    </aside>
+
+  </main>
+
+  <footer>
+    <p><small>&copy; 2026 HTML Tags Demo. Built for learning.</small></p>
+  </footer>
+
+</body>
+</html>
