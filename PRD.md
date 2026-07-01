@@ -226,3 +226,11 @@ The project is complete when:
 ## 10. Success Measure
 
 A beginner learner should be able to inspect the HTML file and identify how common HTML tags are used in a realistic webpage structure.
+
+## 11.Decorate Website
+
+Please update websit html code in index.html file
+
+- add vintage color with example brown white or other
+- asethethic website
+- use HTML-only
