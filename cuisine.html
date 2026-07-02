@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cusine</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #fafafa;
+      color: #222;
+    }
+
+    header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px 32px;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+    header p {
+      color: #888;
+      margin-top: 6px;
+      font-size: 0.95rem;
+    }
+
+    .search {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 20px;
+    }
+    .search input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      outline: none;
+      background: #fff;
+      transition: border 0.2s;
+    }
+    .search input:focus {
+      border-color: #999;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #eee;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .card:hover { opacity: 0.85; }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      background: #f0f0f0;
+    }
+
+    .card-body {
+      padding: 16px 18px 18px;
+    }
+
+    .card-body h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .card-body .meta {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .card-body .price {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .card-body .price::before { content: "\0E3F"; }
+
+    .card-body .origin {
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 4px;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: #aaa;
+    }
+    .empty .emoji { font-size: 2.5rem; margin-bottom: 12px; }
+
+    /* Modal */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
+      overflow: hidden;
+      animation: up 0.2s ease;
+    }
+    @keyframes up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #f0f0f0;
+    }
+
+    .modal-body { padding: 24px; }
+    .modal-body h2 { font-size: 1.3rem; font-weight: 500; margin-bottom: 12px; }
+
+    .modal-body .detail {
+      display: grid;
+      gap: 10px;
+    }
+    .modal-body .detail .row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .modal-body .detail .row .label { color: #999; }
+    .modal-body .detail .row .value { font-weight: 500; }
+
+    .modal-body button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .modal-body button:hover { background: #444; }
+
+    @media (max-width: 600px) {
+      header { padding-top: 40px; }
+      header h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Cusine</h1>
+  <p>Discover our menu</p>
+</header>
+
+<div class="search">
+  <input type="text" id="searchInput" placeholder="Search menu..." />
+</div>
+
+<div class="container">
+  <div class="grid" id="menuGrid"></div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <img id="modalImg" src="" alt="" />
+    <div class="modal-body">
+      <h2 id="modalName"></h2>
+      <div class="detail" id="modalDetail"></div>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Data from my-object.js (normalized fields)
+  const raw = [
+    { id: 1, name: "Pizza", price: "299", cusine: "Italian", origin: "Italy", vegetarian: false },
+    { id: 2, name: "MalaTang", price: "299", usine: "China", origin: "China", vegetarain: false },
+    { id: 3, name: "Pad Thai", price: "99", cusine: "Thai", origin: "Thai", vegetarain: false },
+    { id: 4, name: "Pork Burger", price: "159", cusine: "Italian", origin: "Italian", vegetarain: false },
+    { id: 5, name: "Sushi", price: "199", cusine: "Japan", origin: "Japan", vegetarain: false },
+    { id: 6, name: "Basque Burnt Cheesecake", price: "129", cusine: "Italian", origin: "Italian", vegetarain: false },
+  ];
+
+  // Normalize: handle typos in field names
+  const menu = raw.map(item => ({
+    id: item.id,
+    name: item.name,
+    price: item.price,
+    cuisine: item.cusine || item.usine || "",
+    origin: item.origin,
+    vegetarian: item.vegetarian ?? item.vegetarain ?? false,
+  }));
+
+  const images = {
+    "Pizza": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop",
+    "MalaTang": "https://images.unsplash.com/photo-1555126634-323283e090fa?w=400&h=300&fit=crop",
+    "Pad Thai": "https://images.unsplash.com/photo-1559314809-0d155014e29e?w=400&h=300&fit=crop",
+    "Pork Burger": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop",
+    "Sushi": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=400&h=300&fit=crop",
+    "Basque Burnt Cheesecake": "https://images.pexels.com/photos/6168339/pexels-photo-6168339.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+  };
+
+  const emojis = {
+    "Pizza": "\u{1F355}",
+    "MalaTang": "\u{1F336}",
+    "Pad Thai": "\u{1F35C}",
+    "Pork Burger": "\u{1F354}",
+    "Sushi": "\u{1F363}",
+    "Basque Burnt Cheesecake": "\u{1F370}",
+  };
+
+  function getFiltered() {
+    const q = document.getElementById("searchInput").value.toLowerCase().trim();
+    return menu.filter(f =>
+      f.name.toLowerCase().includes(q) ||
+      f.cuisine.toLowerCase().includes(q) ||
+      f.origin.toLowerCase().includes(q)
+    );
+  }
+
+  function render() {
+    const grid = document.getElementById("menuGrid");
+    const items = getFiltered();
+
+    if (!items.length) {
+      grid.innerHTML = '<div class="empty"><div class="emoji">\u{1F50D}</div><p>No items found</p></div>';
+      return;
+    }
+
+    grid.innerHTML = items.map(f => `
+      <div class="card" onclick="openModal(${f.id})">
+        <img src="${images[f.name]}" alt="${f.name}" loading="lazy"
+             onerror="this.alt='${emojis[f.name]||'\u{1F37D}'}'" />
+        <div class="card-body">
+          <h3>${f.name}</h3>
+          <div class="meta">${f.cuisine}</div>
+          <div class="price">${f.price}</div>
+          <div class="origin">${f.origin}</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function openModal(id) {
+    const f = menu.find(i => i.id === id);
+    if (!f) return;
+    document.getElementById("modalImg").src = images[f.name];
+    document.getElementById("modalImg").alt = f.name;
+    document.getElementById("modalName").textContent = f.name;
+    document.getElementById("modalDetail").innerHTML = `
+      <div class="row"><span class="label">Price</span><span class="value">\u0E3F${f.price}</span></div>
+      <div class="row"><span class="label">Cuisine</span><span class="value">${f.cuisine}</span></div>
+      <div class="row"><span class="label">Origin</span><span class="value">${f.origin}</span></div>
+    `;
+    document.getElementById("overlay").classList.add("open");
+  }
+
+  function closeModal() {
+    document.getElementById("overlay").classList.remove("open");
+  }
+
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+  document.getElementById("searchInput").addEventListener("input", render);
+
+  render();
+</script>
+
+</body>
+</html>

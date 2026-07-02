@@ -1,607 +1,374 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML Tags Demo</title>
-  </head>
-  <body
-    style="
-      margin: 0;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Tags Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
       background: #faf6f0;
       color: #3e2723;
-      font-family: Georgia, &quot;Times New Roman&quot;, serif;
-      line-height: 1.6;
+      line-height: 1.7;
       padding: 0 20px;
-    "
-  >
-    <header
-      style="
-        background: #4a3728;
-        color: #faf6f0;
-        padding: 30px 20px;
-        text-align: center;
-        border-bottom: 6px solid #a1887f;
-      "
-    >
-      <h1 style="margin: 0; font-size: 2.2em; letter-spacing: 2px">
-        &#9733; HTML Tags Demo &#9733;
-      </h1>
-      <nav>
-        <ul
-          style="
-            list-style: none;
-            padding: 0;
-            margin: 16px 0 0;
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-          "
-        >
-          <li>
-            <a
-              href="#text"
-              style="
-                color: #faf6f0;
-                text-decoration: none;
-                font-size: 1.1em;
-                border-bottom: 2px solid transparent;
-                padding-bottom: 4px;
-              "
-              >Text</a
-            >
-          </li>
-          <li>
-            <a
-              href="#lists"
-              style="
-                color: #faf6f0;
-                text-decoration: none;
-                font-size: 1.1em;
-                border-bottom: 2px solid transparent;
-                padding-bottom: 4px;
-              "
-              >Lists</a
-            >
-          </li>
-          <li>
-            <a
-              href="#media"
-              style="
-                color: #faf6f0;
-                text-decoration: none;
-                font-size: 1.1em;
-                border-bottom: 2px solid transparent;
-                padding-bottom: 4px;
-              "
-              >Links &amp; Media</a
-            >
-          </li>
-          <li>
-            <a
-              href="#table"
-              style="
-                color: #faf6f0;
-                text-decoration: none;
-                font-size: 1.1em;
-                border-bottom: 2px solid transparent;
-                padding-bottom: 4px;
-              "
-              >Table</a
-            >
-          </li>
-          <li>
-            <a
-              href="#form"
-              style="
-                color: #faf6f0;
-                text-decoration: none;
-                font-size: 1.1em;
-                border-bottom: 2px solid transparent;
-                padding-bottom: 4px;
-              "
-              >Form</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+    }
+    header {
+      background: #4a3728;
+      color: #faf6f0;
+      padding: 32px 20px;
+      text-align: center;
+      border-bottom: 5px solid #a1887f;
+      margin: 0 -20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+      letter-spacing: 1px;
+      font-weight: normal;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #faf6f0;
+      text-decoration: none;
+      font-size: 0.95em;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 3px;
+    }
+    nav a:hover { border-bottom-color: #a1887f; }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+    }
+    section {
+      background: #efe6d6;
+      padding: 24px 28px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      border-left: 4px solid #6d4c41;
+    }
+    h2 {
+      color: #4a3728;
+      border-bottom: 2px solid #a1887f;
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+      font-weight: normal;
+      font-size: 1.4em;
+    }
+    h3 { color: #4a3728; margin: 16px 0 8px; font-weight: normal; }
+    h4, h5, h6 { color: #4a3728; margin: 10px 0 6px; font-weight: normal; }
+    p { margin-bottom: 12px; }
+    code {
+      background: #d7ccc8;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #4a3728;
+      color: #faf6f0;
+      padding: 16px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 0.9em;
+      margin: 12px 0;
+    }
+    blockquote {
+      background: #d7ccc8;
+      padding: 12px 20px;
+      border-left: 4px solid #6d4c41;
+      margin: 12px 0;
+      font-style: italic;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #a1887f;
+      margin: 16px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+    }
+    caption {
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #4a3728;
+    }
+    th {
+      background: #4a3728;
+      color: #faf6f0;
+      padding: 10px 12px;
+      border: 1px solid #4a3728;
+      text-align: left;
+    }
+    td {
+      padding: 10px 12px;
+      border: 1px solid #a1887f;
+    }
+    tr:nth-child(even) td { background: #faf6f0; }
+    tr:nth-child(odd) td { background: #efe6d6; }
+    form fieldset {
+      border: 2px solid #a1887f;
+      padding: 20px;
+      border-radius: 4px;
+    }
+    form legend {
+      padding: 0 10px;
+      font-weight: bold;
+      color: #4a3728;
+    }
+    form label { display: inline-block; width: 120px; font-weight: bold; }
+    form input, form select, form textarea {
+      padding: 6px 10px;
+      border: 2px solid #a1887f;
+      border-radius: 4px;
+      background: #faf6f0;
+      font-family: 'Roboto', Arial, sans-serif;
+      font-size: 0.95em;
+    }
+    form textarea { width: 60%; }
+    form button {
+      background: #4a3728;
+      color: #faf6f0;
+      border: none;
+      padding: 10px 28px;
+      border-radius: 4px;
+      font-size: 0.95em;
+      font-family: 'Roboto', Arial, sans-serif;
+      cursor: pointer;
+    }
+    form button:hover { background: #5d4037; }
+    figure { margin: 16px 0; text-align: center; }
+    figure img {
+      max-width: 100%;
+      height: auto;
+      border: 3px solid #a1887f;
+      border-radius: 4px;
+    }
+    figcaption { margin-top: 6px; font-style: italic; color: #5d4037; }
+    video, audio { max-width: 100%; }
+    aside {
+      background: #d7ccc8;
+      padding: 16px 24px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      border-left: 4px solid #4a3728;
+    }
+    footer {
+      background: #4a3728;
+      color: #faf6f0;
+      text-align: center;
+      padding: 20px;
+      margin: 0 -20px;
+      border-top: 5px solid #a1887f;
+    }
+    dl dt { font-weight: bold; color: #4a3728; margin-top: 6px; }
+    dl dd { margin-left: 20px; }
+    ol, ul { padding-left: 24px; margin-bottom: 12px; }
+    @media (max-width: 600px) {
+      body { padding: 0 12px; }
+      header { padding: 24px 12px; }
+      header h1 { font-size: 1.5em; }
+      section { padding: 16px; }
+      form label { display: block; width: auto; margin-bottom: 4px; }
+      form textarea { width: 100%; }
+    }
+  </style>
+</head>
+<body>
 
-    <main style="max-width: 860px; margin: 30px auto">
-      <!-- Text Elements -->
-      <section
-        id="text"
-        style="
-          background: #efe6d6;
-          padding: 20px 24px;
-          border-radius: 6px;
-          margin-bottom: 24px;
-          border-left: 5px solid #6d4c41;
-        "
-      >
-        <h2
-          style="
-            color: #4a3728;
-            border-bottom: 2px solid #a1887f;
-            padding-bottom: 6px;
-          "
-        >
-          Text Elements
-        </h2>
+<header>
+  <h1>&#9733; HTML Tags Demo &#9733;</h1>
+  <nav>
+    <ul>
+      <li><a href="#text">Text</a></li>
+      <li><a href="#lists">Lists</a></li>
+      <li><a href="#media">Links &amp; Media</a></li>
+      <li><a href="#table">Table</a></li>
+      <li><a href="#form">Form</a></li>
+    </ul>
+  </nav>
+</header>
 
-        <h1 style="color: #4a3728">Heading 1</h1>
-        <h2 style="color: #4a3728">Heading 2</h2>
-        <h3 style="color: #4a3728">Heading 3</h3>
-        <h4 style="color: #4a3728">Heading 4</h4>
-        <h5 style="color: #4a3728">Heading 5</h5>
-        <h6 style="color: #4a3728">Heading 6</h6>
+<main>
 
-        <p>
-          This is a paragraph. It contains regular text content. Below you will
-          find inline text tags demonstrated.
-        </p>
+  <aside>
+    <h3 style="color:#4a3728;margin-top:0">&#128161; Did You Know?</h3>
+    <p style="margin-bottom:0">
+      HTML stands for <strong>H</strong>yper<strong>T</strong>ext
+      <strong>M</strong>arkup <strong>L</strong>anguage. It was first released in 1993.
+    </p>
+  </aside>
 
-        <p>
-          <strong>Bold text using strong</strong>,
-          <em>italic text using em</em>, <small>small text</small>,
-          <code
-            style="background: #d7ccc8; padding: 2px 6px; border-radius: 3px"
-            >inline code</code
-          >.
-        </p>
+  <section id="text">
+    <h2>Text Elements</h2>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
 
-        <p>Line break:<br />Text after a line break.</p>
+    <p>This is a paragraph. It contains regular text content. Below you will find inline text tags demonstrated.</p>
 
-        <hr style="border: none; border-top: 2px solid #a1887f" />
+    <p>
+      <strong>Bold text using strong</strong>,
+      <em>italic text using em</em>, <small>small text</small>,
+      <code>inline code</code>.
+    </p>
 
-        <blockquote
-          style="
-            background: #d7ccc8;
-            padding: 12px 20px;
-            border-left: 5px solid #6d4c41;
-            margin: 20px 0;
-            font-style: italic;
-          "
-        >
-          This is a blockquote. It is used to quote content from another source.
-        </blockquote>
+    <p>Line break:<br />Text after a line break.</p>
 
-        <pre
-          style="
-            background: #4a3728;
-            color: #faf6f0;
-            padding: 16px;
-            border-radius: 6px;
-            overflow-x: auto;
-          "
-        >
+    <hr />
+
+    <blockquote>
+      This is a blockquote. It is used to quote content from another source.
+    </blockquote>
+
+    <pre>
 function hello() {
   console.log("Hello, world!");
 }
-      </pre
-        >
-      </section>
+    </pre>
+  </section>
 
-      <!-- Lists -->
-      <section
-        id="lists"
-        style="
-          background: #efe6d6;
-          padding: 20px 24px;
-          border-radius: 6px;
-          margin-bottom: 24px;
-          border-left: 5px solid #6d4c41;
-        "
-      >
-        <h2
-          style="
-            color: #4a3728;
-            border-bottom: 2px solid #a1887f;
-            padding-bottom: 6px;
-          "
-        >
-          Lists
-        </h2>
+  <section id="lists">
+    <h2>Lists</h2>
 
-        <h3 style="color: #4a3728">Ordered List</h3>
-        <ol>
-          <li>First item</li>
-          <li>Second item</li>
-          <li>Third item</li>
-        </ol>
+    <h3>Ordered List</h3>
+    <ol>
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item</li>
+    </ol>
 
-        <h3 style="color: #4a3728">Unordered List</h3>
-        <ul style="list-style-type: square">
-          <li>Apples</li>
-          <li>Bananas</li>
-          <li>Cherries</li>
-        </ul>
+    <h3>Unordered List</h3>
+    <ul>
+      <li>Apples</li>
+      <li>Bananas</li>
+      <li>Cherries</li>
+    </ul>
 
-        <h3 style="color: #4a3728">Description List</h3>
-        <dl>
-          <dt style="font-weight: bold; color: #4a3728">HTML</dt>
-          <dd>
-            HyperText Markup Language — the standard language for web pages.
-          </dd>
-          <dt style="font-weight: bold; color: #4a3728">CSS</dt>
-          <dd>Cascading Style Sheets — used to style HTML content.</dd>
-        </dl>
-      </section>
+    <h3>Description List</h3>
+    <dl>
+      <dt>HTML</dt>
+      <dd>HyperText Markup Language — the standard language for web pages.</dd>
+      <dt>CSS</dt>
+      <dd>Cascading Style Sheets — used to style HTML content.</dd>
+    </dl>
+  </section>
 
-      <!-- Links and Images -->
-      <section
-        id="media"
-        style="
-          background: #efe6d6;
-          padding: 20px 24px;
-          border-radius: 6px;
-          margin-bottom: 24px;
-          border-left: 5px solid #6d4c41;
-        "
-      >
-        <h2
-          style="
-            color: #4a3728;
-            border-bottom: 2px solid #a1887f;
-            padding-bottom: 6px;
-          "
-        >
-          Links &amp; Images
-        </h2>
+  <section id="media">
+    <h2>Links &amp; Images</h2>
 
-        <p>
-          Visit
-          <a
-            href="https://developer.mozilla.org"
-            target="_blank"
-            style="color: #6d4c41; font-weight: bold"
-            >MDN Web Docs</a
-          >
-          to learn more about HTML.
-        </p>
+    <p>
+      Visit
+      <a href="https://developer.mozilla.org" target="_blank" style="color:#6d4c41;font-weight:bold">MDN Web Docs</a>
+      to learn more about HTML.
+    </p>
 
-        <figure style="margin: 20px 0; text-align: center">
-          <img
-            src="https://placehold.co/600x200/4a3728/faf6f0?text=Sample+Image"
-            alt="Placeholder image with vintage brown background and cream text reading Sample Image"
-            style="
-              max-width: 100%;
-              height: auto;
-              border: 3px solid #a1887f;
-              border-radius: 4px;
-            "
-          />
-          <figcaption
-            style="margin-top: 8px; font-style: italic; color: #5d4037"
-          >
-            This is a figure caption describing the image above.
-          </figcaption>
-        </figure>
-      </section>
+    <figure>
+      <img
+        src="https://placehold.co/600x200/4a3728/faf6f0?text=Sample+Image"
+        alt="Placeholder image with brown background and cream text reading Sample Image"
+      />
+      <figcaption>This is a figure caption describing the image above.</figcaption>
+    </figure>
 
-      <!-- Table -->
-      <section
-        id="table"
-        style="
-          background: #efe6d6;
-          padding: 20px 24px;
-          border-radius: 6px;
-          margin-bottom: 24px;
-          border-left: 5px solid #6d4c41;
-        "
-      >
-        <h2
-          style="
-            color: #4a3728;
-            border-bottom: 2px solid #a1887f;
-            padding-bottom: 6px;
-          "
-        >
-          Table
-        </h2>
+    <h3>Audio</h3>
+    <audio controls>
+      <source src="sample.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
 
-        <table style="width: 100%; border-collapse: collapse; margin: 16px 0">
-          <caption
-            style="margin-bottom: 8px; font-weight: bold; color: #4a3728"
-          >
-            Sample Students Table
-          </caption>
-          <thead>
-            <tr style="background: #4a3728; color: #faf6f0">
-              <th
-                style="
-                  padding: 10px 12px;
-                  border: 1px solid #4a3728;
-                  text-align: left;
-                "
-              >
-                Name
-              </th>
-              <th
-                style="
-                  padding: 10px 12px;
-                  border: 1px solid #4a3728;
-                  text-align: left;
-                "
-              >
-                Subject
-              </th>
-              <th
-                style="
-                  padding: 10px 12px;
-                  border: 1px solid #4a3728;
-                  text-align: left;
-                "
-              >
-                Grade
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background: #faf6f0">
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">
-                Alice
-              </td>
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">
-                Math
-              </td>
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">A</td>
-            </tr>
-            <tr style="background: #efe6d6">
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">Bob</td>
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">
-                Science
-              </td>
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">B+</td>
-            </tr>
-            <tr style="background: #faf6f0">
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">
-                Charlie
-              </td>
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">
-                History
-              </td>
-              <td style="padding: 10px 12px; border: 1px solid #a1887f">A-</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+    <h3>Video</h3>
+    <video controls width="320">
+      <source src="sample.mp4" type="video/mp4" />
+      Your browser does not support the video element.
+    </video>
+  </section>
 
-      <!-- Form -->
-      <section
-        id="form"
-        style="
-          background: #efe6d6;
-          padding: 20px 24px;
-          border-radius: 6px;
-          margin-bottom: 24px;
-          border-left: 5px solid #6d4c41;
-        "
-      >
-        <h2
-          style="
-            color: #4a3728;
-            border-bottom: 2px solid #a1887f;
-            padding-bottom: 6px;
-          "
-        >
-          Form
-        </h2>
+  <section id="table">
+    <h2>Table</h2>
 
-        <form>
-          <fieldset
-            style="border: 2px solid #a1887f; padding: 20px; border-radius: 6px"
-          >
-            <legend style="padding: 0 10px; font-weight: bold; color: #4a3728">
-              Personal Information
-            </legend>
+    <table>
+      <caption>Sample Students Table</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Alice</td><td>Math</td><td>A</td></tr>
+        <tr><td>Bob</td><td>Science</td><td>B+</td></tr>
+        <tr><td>Charlie</td><td>History</td><td>A-</td></tr>
+      </tbody>
+    </table>
+  </section>
 
-            <div style="margin-bottom: 12px">
-              <label
-                for="name"
-                style="display: inline-block; width: 120px; font-weight: bold"
-                >Full Name:</label
-              >
-              <input
-                type="text"
-                id="name"
-                name="name"
-                style="
-                  padding: 6px 10px;
-                  border: 2px solid #a1887f;
-                  border-radius: 4px;
-                  background: #faf6f0;
-                  font-family: inherit;
-                "
-              />
-            </div>
+  <section id="form">
+    <h2>Form</h2>
 
-            <div style="margin-bottom: 12px">
-              <label
-                for="email"
-                style="display: inline-block; width: 120px; font-weight: bold"
-                >Email:</label
-              >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                style="
-                  padding: 6px 10px;
-                  border: 2px solid #a1887f;
-                  border-radius: 4px;
-                  background: #faf6f0;
-                  font-family: inherit;
-                "
-              />
-            </div>
+    <form>
+      <fieldset>
+        <legend>Personal Information</legend>
 
-            <div style="margin-bottom: 12px">
-              <label
-                for="age"
-                style="display: inline-block; width: 120px; font-weight: bold"
-                >Age:</label
-              >
-              <input
-                type="number"
-                id="age"
-                name="age"
-                style="
-                  padding: 6px 10px;
-                  border: 2px solid #a1887f;
-                  border-radius: 4px;
-                  background: #faf6f0;
-                  font-family: inherit;
-                "
-              />
-            </div>
+        <div style="margin-bottom:12px">
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" />
+        </div>
 
-            <div gstyle="margin-bottom: 12px">
-              <label
-                for="country"
-                style="display: inline-block; width: 120px; font-weight: bold"
-                >Country:</label
-              >
-              <select
-                id="country"
-                name="country"
-                style="
-                  padding: 6px 10px;
-                  border: 2px solid #a1887f;
-                  border-radius: 4px;
-                  background: #faf6f0;
-                  font-family: inherit;
-                "
-              >
-                <option value="">-- Select --</option>
-                <option value="jp">Japan</option>
-                <option value="us">United States</option>
-                <option value="uk">United Kingdom</option>
-              </select>
-            </div>
+        <div style="margin-bottom:12px">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" />
+        </div>
 
-            <div style="margin-bottom: 12px">
-              <label
-                for="message"
-                style="
-                  display: inline-block;
-                  width: 120px;
-                  font-weight: bold;
-                  vertical-align: top;
-                "
-                >Message:</label
-              >
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                style="
-                  padding: 6px 10px;
-                  border: 2px solid #a1887f;
-                  border-radius: 4px;
-                  background: #faf6f0;
-                  font-family: inherit;
-                  width: 60%;
-                "
-              ></textarea>
-            </div>
+        <div style="margin-bottom:12px">
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" />
+        </div>
 
-            <div style="margin-left: 124px">
-              <button
-                type="submit"
-                style="
-                  background: #4a3728;
-                  color: #faf6f0;
-                  border: none;
-                  padding: 10px 28px;
-                  border-radius: 6px;
-                  font-size: 1em;
-                  font-family: inherit;
-                  cursor: pointer;
-                "
-              >
-                Submit
-              </button>
-            </div>
-          </fieldset>
-        </form>
-      </section>
+        <div style="margin-bottom:12px">
+          <label for="country">Country:</label>
+          <select id="country" name="country">
+            <option value="">-- Select --</option>
+            <option value="jp">Japan</option>
+            <option value="us">United States</option>
+            <option value="uk">United Kingdom</option>
+          </select>
+        </div>
 
-      <!-- Audio and Video -->
-      <section
-        id="audio-video"
-        style="
-          background: #efe6d6;
-          padding: 20px 24px;
-          border-radius: 6px;
-          margin-bottom: 24px;
-          border-left: 5px solid #6d4c41;
-        "
-      >
-        <h2
-          style="
-            color: #4a3728;
-            border-bottom: 2px solid #a1887f;
-            padding-bottom: 6px;
-          "
-        >
-          Audio &amp; Video
-        </h2>
+        <div style="margin-bottom:12px">
+          <label for="message" style="vertical-align:top">Message:</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
 
-        <h3 style="color: #4a3728">Audio</h3>
-        <audio controls style="width: 100%">
-          <source src="sample.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
+        <div style="margin-left:124px">
+          <button type="submit">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+  </section>
 
-        <h3 style="color: #4a3728">Video</h3>
-        <video
-          controls
-          width="320"
-          style="
-            max-width: 100%;
-            height: auto;
-            border: 3px solid #a1887f;
-            border-radius: 4px;
-          "
-        >
-          <source src="sample.mp4" type="video/mp4" />
-          Your browser does not support the video element.
-        </video>
-      </section>
+</main>
 
-      <aside
-        style="
-          background: #d7ccc8;
-          padding: 16px 24px;
-          border-radius: 6px;
-          margin-bottom: 24px;
-          border-left: 5px solid #4a3728;
-        "
-      >
-        <h3 style="color: #4a3728; margin-top: 0">&#128161; Did You Know?</h3>
-        <p style="margin-bottom: 0">
-          HTML stands for <strong>H</strong>yper<strong>T</strong>ext
-          <strong>M</strong>arkup <strong>L</strong>anguage. It was first
-          released in 1993.
-        </p>
-      </aside>
-    </main>
+<footer>
+  <p><small>&copy; 2026 HTML Tags Demo. Built for learning.</small></p>
+</footer>
 
-    <footer
-      style="
-        background: #4a3728;
-        color: #faf6f0;
-        text-align: center;
-        padding: 20px;
-        margin: 0 -20px;
-        border-top: 6px solid #a1887f;
-      "
-    >
-      <p style="margin: 0">
-        <small>&copy; 2026 HTML Tags Demo. Built for learning.</small>
-      </p>
-    </footer>
-  </body>
+</body>
 </html>

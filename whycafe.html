@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Why Cafe?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+    }
+
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 24px 12px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+    header h1 span { color: #8b7355; }
+    header p {
+      color: #888;
+      font-size: 0.95rem;
+      margin-top: 4px;
+      font-weight: 300;
+    }
+
+    .search {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px 28px;
+    }
+    .search input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      outline: none;
+      background: #fff;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+    .search input:focus { border-color: #bbb; }
+
+    .filters {
+      max-width: 1100px;
+      margin: -16px auto 0;
+      padding: 0 24px 24px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filters button {
+      padding: 8px 18px;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .filters button:hover { border-color: #8b7355; color: #8b7355; }
+    .filters button.active {
+      background: #8b7355;
+      border-color: #8b7355;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: box-shadow 0.25s;
+    }
+    .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .card-body { padding: 18px 20px 20px; }
+
+    .card-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .card-body .cuisine {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    .card-body .sizes {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .card-body .sizes span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #f5f5f5;
+      color: #555;
+    }
+
+    .card-body .origin {
+      font-size: 0.8rem;
+      color: #bbb;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: #aaa;
+    }
+    .empty .icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      overflow: hidden;
+      animation: up 0.25s ease;
+    }
+    @keyframes up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .modal-body { padding: 24px; }
+    .modal-body h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; }
+    .modal-body .cuisine { font-size: 0.85rem; color: #999; margin-bottom: 16px; }
+
+    .modal-body .detail { display: grid; gap: 10px; }
+    .modal-body .detail .row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .modal-body .detail .row .label { color: #999; }
+    .modal-body .detail .row .value { font-weight: 500; }
+
+    .modal-body .ingredients {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .modal-body .ingredients p {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 6px;
+    }
+    .modal-body .ingredients .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .modal-body .ingredients .tags span {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #f5f5f5;
+      color: #555;
+    }
+
+    .modal-body button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #8b7355;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .modal-body button:hover { background: #7a6448; }
+
+    @media (max-width: 640px) {
+      header { padding-top: 36px; }
+      header h1 { font-size: 1.6rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>The Why <span>Cafe?</span></h1>
+  <p>A world of flavor in every bite</p>
+</header>
+
+<div class="search">
+  <input type="text" id="searchInput" placeholder="Search menu..." />
+</div>
+
+<div class="filters" id="filters"></div>
+
+<div class="container">
+  <div class="grid" id="menuGrid"></div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <img id="modalImg" src="" alt="" />
+    <div class="modal-body">
+      <h2 id="modalName"></h2>
+      <div class="cuisine" id="modalCuisine"></div>
+      <div class="detail" id="modalDetail"></div>
+      <div class="ingredients" id="modalIngredients"></div>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const raw = [
+    { id: 1, name: "Cheese Pizza", size: [{name:"small",price:"99"},{name:"medium",price:"149"},{name:"large",price:"199"}], cusine: "Italy", origin: "Italy", vegetarian: false, ingredients: ["Cheese","Tomato","Basil"] },
+    { id: 2, name: "MalaTang", size: [{name:"small",price:"99"},{name:"medium",price:"149"},{name:"large",price:"199"}], cusine: "China", origin: "China", vegetarian: false, ingredients: ["Soy Sauce","Chili Oil","Garlic"] },
+    { id: 3, name: "Pad Thai", size: [{name:"small",price:"99"},{name:"medium",price:"149"},{name:"large",price:"199"}], cusine: "Thai", origin: "Thai", vegetarian: false, ingredients: ["Tofu","Peanuts","Lime"] },
+    { id: 4, name: "Pork Burger", size: [{name:"small",price:"159"},{name:"medium",price:"209"},{name:"large",price:"259"}], cusine: "American", origin: "American", vegetarian: false, ingredients: ["Beef","Bun","Lettuce"] },
+    { id: 5, name: "Sushi", size: [{name:"small",price:"199"},{name:"medium",price:"249"},{name:"large",price:"299"}], cusine: "Japanese", origin: "Japan", vegetarian: false, ingredients: ["Rice","Fish","Seaweed"] },
+    { id: 6, name: "Basque Burnt Cheesecake", size: [{name:"small",price:"129"},{name:"medium",price:"179"},{name:"large",price:"229"}], cusine: "Italian", origin: "Italian", vegetarian: false, ingredients: ["Cheese","Sugar","Eggs"] },
+    { id: 7, name: "Vegan Salad", size: [{name:"small",price:"89"},{name:"medium",price:"139"},{name:"large",price:"189"}], cusine: "Vegetarian", origin: "Global", vegetarian: true, ingredients: ["Lettuce","Tomato","Cucumber"] },
+    { id: 8, name: "Strawberry Smoothie", size: [{name:"small",price:"159"},{name:"medium",price:"209"},{name:"large",price:"259"}], cusine: "Healthy", origin: "Global", vegetarian: true, ingredients: ["Strawberry","Yogurt","Milk"] },
+    { id: 9, name: "Uji Matcha Latte", size: [{name:"small",price:"95"},{name:"large",price:"149"}], cusine: "Japanese", origin: "Japan", vegetarian: true, ingredients: ["Uji Matcha","Milk","Sugar"] },
+  ];
+
+  const menu = raw.map(item => ({
+    id: item.id,
+    name: item.name.trim(),
+    sizes: item.size,
+    cuisine: item.cusine || "",
+    origin: item.origin,
+    vegetarian: !!item.vegetarian,
+    ingredients: item.ingredients || [],
+  }));
+
+  const images = {
+    "Cheese Pizza": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "MalaTang": "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Pad Thai": "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Pork Burger": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Sushi": "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Basque Burnt Cheesecake": "https://images.pexels.com/photos/6168339/pexels-photo-6168339.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Vegan Salad": "https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Strawberry Smoothie": "https://images.pexels.com/photos/33313171/pexels-photo-33313171.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Uji Matcha Latte": "https://images.pexels.com/photos/5946971/pexels-photo-5946971.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+  };
+
+  let activeCategory = "All";
+
+  const categories = [...new Set(menu.map(f => f.cuisine))].sort();
+  const filterBar = document.getElementById("filters");
+  const allBtn = document.createElement("button");
+  allBtn.textContent = "All";
+  allBtn.className = "active";
+  allBtn.onclick = () => setCategory("All");
+  filterBar.appendChild(allBtn);
+  categories.forEach(c => {
+    const btn = document.createElement("button");
+    btn.textContent = c;
+    btn.onclick = () => setCategory(c);
+    filterBar.appendChild(btn);
+  });
+
+  function setCategory(cat) {
+    activeCategory = cat;
+    document.querySelectorAll(".filters button").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".filters button").forEach(b => {
+      if (b.textContent === cat) b.classList.add("active");
+    });
+    render();
+  }
+
+  function getFiltered() {
+    const q = document.getElementById("searchInput").value.toLowerCase().trim();
+    return menu.filter(f => {
+      const textMatch = f.name.toLowerCase().includes(q) ||
+        f.cuisine.toLowerCase().includes(q) ||
+        f.origin.toLowerCase().includes(q);
+      const catMatch = activeCategory === "All" || f.cuisine === activeCategory;
+      return textMatch && catMatch;
+    });
+  }
+
+  function render() {
+    const grid = document.getElementById("menuGrid");
+    const items = getFiltered();
+
+    if (!items.length) {
+      grid.innerHTML = '<div class="empty"><div class="icon">&#x1F50D;</div><p>No items found</p></div>';
+      return;
+    }
+
+    grid.innerHTML = items.map(f => `
+      <div class="card" onclick="openModal(${f.id})">
+        <img src="${images[f.name]}" alt="${f.name}" loading="lazy" />
+        <div class="card-body">
+          <h3>${f.name}</h3>
+          <div class="cuisine">${f.cuisine}</div>
+          <div class="sizes">${f.sizes.map(s => '<span>' + s.name + ' \u0E3F' + s.price + '</span>').join('')}</div>
+          <div class="origin">&#x1F30D; ${f.origin}</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function openModal(id) {
+    const f = menu.find(i => i.id === id);
+    if (!f) return;
+    document.getElementById("modalImg").src = images[f.name];
+    document.getElementById("modalImg").alt = f.name;
+    document.getElementById("modalName").textContent = f.name;
+    document.getElementById("modalCuisine").textContent = f.cuisine + (f.vegetarian ? " \u2022 Vegetarian" : "");
+    document.getElementById("modalDetail").innerHTML = f.sizes.map(s =>
+      '<div class="row"><span class="label">' + s.name + '</span><span class="value">\u0E3F' + s.price + '</span></div>'
+    ).join("") +
+    '<div class="row"><span class="label">Origin</span><span class="value">' + f.origin + '</span></div>';
+    document.getElementById("modalIngredients").innerHTML =
+      '<p>Ingredients</p><div class="tags">' +
+      f.ingredients.map(i => '<span>' + i + '</span>').join("") +
+      '</div>';
+    document.getElementById("overlay").classList.add("open");
+  }
+
+  function closeModal() {
+    document.getElementById("overlay").classList.remove("open");
+  }
+
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+  document.getElementById("searchInput").addEventListener("input", render);
+
+  render();
+</script>
+
+</body>
+</html>
