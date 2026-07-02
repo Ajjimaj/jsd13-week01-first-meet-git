@@ -1,3 +1,3 @@
 Hello World!
 
-Learning to Git and GitHub
+Learning Git and GitHub
