@@ -24,7 +24,7 @@ let foodDatabase = [
       { name: "medium", price: "149" },
       { name: "large", price: "199" },
     ],
-    cusine: "Italy",
+    cusine: "Italian",
     origin: "Italy",
     vegetarian: false,
     ingredients: ["Cheese", "Tomato", "Basil"],
