@@ -3,372 +3,474 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HTML Tags Demo</title>
+  <title>The Why Cafe?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Roboto', Arial, sans-serif;
-      background: #faf6f0;
-      color: #3e2723;
-      line-height: 1.7;
-      padding: 0 20px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
     }
-    header {
-      background: #4a3728;
-      color: #faf6f0;
-      padding: 32px 20px;
-      text-align: center;
-      border-bottom: 5px solid #a1887f;
-      margin: 0 -20px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2em;
-      letter-spacing: 1px;
-      font-weight: normal;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 14px 0 0;
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
     }
-    nav a {
-      color: #faf6f0;
+    nav .brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    nav .brand span { color: #8b7355; }
+    nav .links { display: flex; gap: 24px; }
+    nav .links a {
       text-decoration: none;
-      font-size: 0.95em;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 3px;
-    }
-    nav a:hover { border-bottom-color: #a1887f; }
-    main {
-      max-width: 800px;
-      margin: 30px auto;
-    }
-    section {
-      background: #efe6d6;
-      padding: 24px 28px;
-      border-radius: 4px;
-      margin-bottom: 24px;
-      border-left: 4px solid #6d4c41;
-    }
-    h2 {
-      color: #4a3728;
-      border-bottom: 2px solid #a1887f;
-      padding-bottom: 6px;
-      margin-bottom: 16px;
-      font-weight: normal;
-      font-size: 1.4em;
-    }
-    h3 { color: #4a3728; margin: 16px 0 8px; font-weight: normal; }
-    h4, h5, h6 { color: #4a3728; margin: 10px 0 6px; font-weight: normal; }
-    p { margin-bottom: 12px; }
-    code {
-      background: #d7ccc8;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-    pre {
-      background: #4a3728;
-      color: #faf6f0;
-      padding: 16px;
-      border-radius: 4px;
-      overflow-x: auto;
-      font-size: 0.9em;
-      margin: 12px 0;
-    }
-    blockquote {
-      background: #d7ccc8;
-      padding: 12px 20px;
-      border-left: 4px solid #6d4c41;
-      margin: 12px 0;
-      font-style: italic;
-    }
-    hr {
-      border: none;
-      border-top: 2px solid #a1887f;
-      margin: 16px 0;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 12px 0;
-    }
-    caption {
-      margin-bottom: 6px;
-      font-weight: bold;
-      color: #4a3728;
-    }
-    th {
-      background: #4a3728;
-      color: #faf6f0;
-      padding: 10px 12px;
-      border: 1px solid #4a3728;
-      text-align: left;
-    }
-    td {
-      padding: 10px 12px;
-      border: 1px solid #a1887f;
-    }
-    tr:nth-child(even) td { background: #faf6f0; }
-    tr:nth-child(odd) td { background: #efe6d6; }
-    form fieldset {
-      border: 2px solid #a1887f;
-      padding: 20px;
-      border-radius: 4px;
-    }
-    form legend {
-      padding: 0 10px;
-      font-weight: bold;
-      color: #4a3728;
-    }
-    form label { display: inline-block; width: 120px; font-weight: bold; }
-    form input, form select, form textarea {
-      padding: 6px 10px;
-      border: 2px solid #a1887f;
-      border-radius: 4px;
-      background: #faf6f0;
-      font-family: 'Roboto', Arial, sans-serif;
-      font-size: 0.95em;
-    }
-    form textarea { width: 60%; }
-    form button {
-      background: #4a3728;
-      color: #faf6f0;
-      border: none;
-      padding: 10px 28px;
-      border-radius: 4px;
-      font-size: 0.95em;
-      font-family: 'Roboto', Arial, sans-serif;
+      color: #666;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
       cursor: pointer;
     }
-    form button:hover { background: #5d4037; }
-    figure { margin: 16px 0; text-align: center; }
-    figure img {
-      max-width: 100%;
-      height: auto;
-      border: 3px solid #a1887f;
-      border-radius: 4px;
-    }
-    figcaption { margin-top: 6px; font-style: italic; color: #5d4037; }
-    video, audio { max-width: 100%; }
-    aside {
-      background: #d7ccc8;
-      padding: 16px 24px;
-      border-radius: 4px;
-      margin-bottom: 24px;
-      border-left: 4px solid #4a3728;
-    }
-    footer {
-      background: #4a3728;
-      color: #faf6f0;
+    nav .links a:hover, nav .links a.active { color: #1a1a1a; border-bottom-color: #8b7355; }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* HOME PAGE */
+    .hero {
+      min-height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 20px;
-      margin: 0 -20px;
-      border-top: 5px solid #a1887f;
+      padding: 40px 24px;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("https://images.pexels.com/photos/29833130/pexels-photo-29833130.jpeg?auto=compress&cs=tinysrgb&w=1500&h=1000&fit=crop") center / cover no-repeat;
     }
-    dl dt { font-weight: bold; color: #4a3728; margin-top: 6px; }
-    dl dd { margin-left: 20px; }
-    ol, ul { padding-left: 24px; margin-bottom: 12px; }
-    @media (max-width: 600px) {
-      body { padding: 0 12px; }
-      header { padding: 24px 12px; }
-      header h1 { font-size: 1.5em; }
-      section { padding: 16px; }
-      form label { display: block; width: auto; margin-bottom: 4px; }
-      form textarea { width: 100%; }
+    .hero .content { max-width: 600px; }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      color: #fff;
+    }
+    .hero h1 span { color: #d4b896; }
+    .hero .btn {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 14px 40px;
+      background: #8b7355;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero .btn:hover { background: #7a6448; }
+
+    /* MENU PAGE */
+    .menu-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 0;
+    }
+    .menu-header h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .menu-header p {
+      color: #888;
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .search {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 24px 24px;
+    }
+    .search input {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      outline: none;
+      background: #fff;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+    .search input:focus { border-color: #bbb; }
+
+    .filters {
+      max-width: 1100px;
+      margin: -12px auto 0;
+      padding: 0 24px 24px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filters button {
+      padding: 8px 18px;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #666;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .filters button:hover { border-color: #8b7355; color: #8b7355; }
+    .filters button.active {
+      background: #8b7355;
+      border-color: #8b7355;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .card-menu {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
+      cursor: pointer;
+      transition: box-shadow 0.25s;
+    }
+    .card-menu:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+
+    .card-menu img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .card-menu .body { padding: 18px 20px 20px; }
+    .card-menu .body h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 2px; }
+    .card-menu .body .cuisine { font-size: 0.8rem; color: #999; margin-bottom: 10px; }
+    .card-menu .body .sizes {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .card-menu .body .sizes span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: #f5f5f5;
+      color: #555;
+    }
+
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: #aaa;
+    }
+    .empty .icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      overflow: hidden;
+      animation: up 0.25s ease;
+    }
+    @keyframes up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
+
+    .modal-body { padding: 24px; }
+    .modal-body h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 4px; }
+    .modal-body .cuisine { font-size: 0.85rem; color: #999; margin-bottom: 16px; }
+
+    .modal-body .detail { display: grid; gap: 10px; }
+    .modal-body .detail .row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .modal-body .detail .row .label { color: #999; }
+    .modal-body .detail .row .value { font-weight: 500; }
+
+    .modal-body .ingredients {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .modal-body .ingredients p {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 6px;
+    }
+    .modal-body .ingredients .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .modal-body .ingredients .tags span {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: #f5f5f5;
+      color: #555;
+    }
+
+    .modal-body button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #8b7355;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .modal-body button:hover { background: #7a6448; }
+
+    @media (max-width: 640px) {
+      nav { flex-direction: column; gap: 12px; }
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 40px 24px 60px; }
+      .grid { grid-template-columns: 1fr; }
+
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>&#9733; HTML Tags Demo &#9733;</h1>
-  <nav>
-    <ul>
-      <li><a href="#text">Text</a></li>
-      <li><a href="#lists">Lists</a></li>
-      <li><a href="#media">Links &amp; Media</a></li>
-      <li><a href="#table">Table</a></li>
-      <li><a href="#form">Form</a></li>
-    </ul>
-  </nav>
-</header>
+<nav>
+  <div class="brand">The Why <span>Cafe?</span></div>
+  <div class="links">
+    <a class="active" onclick="navigate('home')">Home</a>
+    <a onclick="navigate('menu')">Menu</a>
+  </div>
+</nav>
 
-<main>
+  <!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="content">
+      <h1>Good food,<br /><span>no why</span> needed.</h1>
+      <a class="btn" onclick="navigate('menu')">Our Menu</a>
+    </div>
+  </div>
+</div>
 
-  <aside>
-    <h3 style="color:#4a3728;margin-top:0">&#128161; Did You Know?</h3>
-    <p style="margin-bottom:0">
-      HTML stands for <strong>H</strong>yper<strong>T</strong>ext
-      <strong>M</strong>arkup <strong>L</strong>anguage. It was first released in 1993.
-    </p>
-  </aside>
+<!-- MENU PAGE -->
+<div class="page" id="page-menu">
+  <div class="menu-header">
+    <h2>Our Menu</h2>
+    <p>Explore dishes from around the world</p>
+  </div>
 
-  <section id="text">
-    <h2>Text Elements</h2>
-    <h1>Heading 1</h1>
-    <h2>Heading 2</h2>
-    <h3>Heading 3</h3>
-    <h4>Heading 4</h4>
-    <h5>Heading 5</h5>
-    <h6>Heading 6</h6>
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Search menu..." />
+  </div>
 
-    <p>This is a paragraph. It contains regular text content. Below you will find inline text tags demonstrated.</p>
+  <div class="filters" id="filters"></div>
 
-    <p>
-      <strong>Bold text using strong</strong>,
-      <em>italic text using em</em>, <small>small text</small>,
-      <code>inline code</code>.
-    </p>
+  <div class="container">
+    <div class="grid" id="menuGrid"></div>
+  </div>
+</div>
 
-    <p>Line break:<br />Text after a line break.</p>
+<div class="overlay" id="overlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <img id="modalImg" src="" alt="" />
+    <div class="modal-body">
+      <h2 id="modalName"></h2>
+      <div class="cuisine" id="modalCuisine"></div>
+      <div class="detail" id="modalDetail"></div>
+      <div class="ingredients" id="modalIngredients"></div>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
 
-    <hr />
+<script>
+  // Data from my-object.js only
+  const raw = [
+    { id: 1, name: "Cheese Pizza", size: [{name:"small",price:"99"},{name:"medium",price:"149"},{name:"large",price:"199"}], cusine: "Italian", origin: "Italy", vegetarian: false, ingredients: ["Cheese","Tomato","Basil"] },
+    { id: 2, name: "MalaTang", size: [{name:"small",price:"99"},{name:"medium",price:"149"},{name:"large",price:"199"}], cusine: "China", origin: "China", vegetarian: false, ingredients: ["Soy Sauce","Chili Oil","Garlic"] },
+    { id: 3, name: "Pad Thai", size: [{name:"small",price:"99"},{name:"medium",price:"149"},{name:"large",price:"199"}], cusine: "Thai", origin: "Thai", vegetarian: false, ingredients: ["Tofu","Peanuts","Lime"] },
+    { id: 4, name: "Pork Burger", size: [{name:"small",price:"159"},{name:"medium",price:"209"},{name:"large",price:"259"}], cusine: "American", origin: "American", vegetarian: false, ingredients: ["Beef","Bun","Lettuce"] },
+    { id: 5, name: "Sushi", size: [{name:"small",price:"199"},{name:"medium",price:"249"},{name:"large",price:"299"}], cusine: "Japanese", origin: "Japan", vegetarian: false, ingredients: ["Rice","Fish","Seaweed"] },
+    { id: 6, name: "Basque Burnt Cheesecake", size: [{name:"small",price:"129"},{name:"medium",price:"179"},{name:"large",price:"229"}], cusine: "Italian", origin: "Italian", vegetarian: false, ingredients: ["Cheese","Sugar","Eggs"] },
+    { id: 7, name: "Vegan Salad", size: [{name:"small",price:"89"},{name:"medium",price:"139"},{name:"large",price:"189"}], cusine: "Vegetarian", origin: "Global", vegetarian: true, ingredients: ["Lettuce","Tomato","Cucumber"] },
+    { id: 8, name: "Strawberry Smoothie", size: [{name:"small",price:"159"},{name:"medium",price:"209"},{name:"large",price:"259"}], cusine: "Healthy", origin: "Global", vegetarian: true, ingredients: ["Strawberry","Yogurt","Milk"] },
+    { id: 9, name: "Uji Matcha Latte", size: [{name:"small",price:"95"},{name:"large",price:"149"}], cusine: "Japanese", origin: "Japan", vegetarian: true, ingredients: ["Uji Matcha","Milk","Sugar"] },
+  ];
 
-    <blockquote>
-      This is a blockquote. It is used to quote content from another source.
-    </blockquote>
+  const menu = raw.map(item => ({
+    id: item.id,
+    name: item.name.trim(),
+    sizes: item.size,
+    cuisine: item.cusine || "",
+    origin: item.origin,
+    vegetarian: !!item.vegetarian,
+    ingredients: item.ingredients || [],
+  }));
 
-    <pre>
-function hello() {
-  console.log("Hello, world!");
-}
-    </pre>
-  </section>
+  const images = {
+    "Cheese Pizza": "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "MalaTang": "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Pad Thai": "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Pork Burger": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Sushi": "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Basque Burnt Cheesecake": "https://images.pexels.com/photos/6168339/pexels-photo-6168339.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Vegan Salad": "https://images.pexels.com/photos/1213710/pexels-photo-1213710.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Strawberry Smoothie": "https://images.pexels.com/photos/33313171/pexels-photo-33313171.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    "Uji Matcha Latte": "https://images.pexels.com/photos/5946971/pexels-photo-5946971.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+  };
 
-  <section id="lists">
-    <h2>Lists</h2>
+  // Navigation
+  function navigate(page) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById("page-" + page).classList.add("active");
+    document.querySelectorAll("nav .links a").forEach(a => a.classList.remove("active"));
+    document.querySelectorAll("nav .links a").forEach(a => {
+      if (a.textContent.toLowerCase() === page) a.classList.add("active");
+    });
+  }
 
-    <h3>Ordered List</h3>
-    <ol>
-      <li>First item</li>
-      <li>Second item</li>
-      <li>Third item</li>
-    </ol>
+  // Menu page: filters
+  const cuisines = [...new Set(menu.map(f => f.cuisine))];
+  let activeCategory = "All";
+  const filterBar = document.getElementById("filters");
+  const allBtn = document.createElement("button");
+  allBtn.textContent = "All";
+  allBtn.className = "active";
+  allBtn.onclick = () => setCategory("All");
+  filterBar.appendChild(allBtn);
+  cuisines.forEach(c => {
+    const btn = document.createElement("button");
+    btn.textContent = c;
+    btn.onclick = () => setCategory(c);
+    filterBar.appendChild(btn);
+  });
 
-    <h3>Unordered List</h3>
-    <ul>
-      <li>Apples</li>
-      <li>Bananas</li>
-      <li>Cherries</li>
-    </ul>
+  function setCategory(cat) {
+    activeCategory = cat;
+    document.querySelectorAll(".filters button").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".filters button").forEach(b => {
+      if (b.textContent === cat) b.classList.add("active");
+    });
+    render();
+  }
 
-    <h3>Description List</h3>
-    <dl>
-      <dt>HTML</dt>
-      <dd>HyperText Markup Language — the standard language for web pages.</dd>
-      <dt>CSS</dt>
-      <dd>Cascading Style Sheets — used to style HTML content.</dd>
-    </dl>
-  </section>
+  function getFiltered() {
+    const q = document.getElementById("searchInput").value.toLowerCase().trim();
+    return menu.filter(f => {
+      const textMatch = f.name.toLowerCase().includes(q) ||
+        f.cuisine.toLowerCase().includes(q);
+      const catMatch = activeCategory === "All" || f.cuisine === activeCategory;
+      return textMatch && catMatch;
+    });
+  }
 
-  <section id="media">
-    <h2>Links &amp; Images</h2>
+  function render() {
+    const grid = document.getElementById("menuGrid");
+    const items = getFiltered();
 
-    <p>
-      Visit
-      <a href="https://developer.mozilla.org" target="_blank" style="color:#6d4c41;font-weight:bold">MDN Web Docs</a>
-      to learn more about HTML.
-    </p>
+    if (!items.length) {
+      grid.innerHTML = '<div class="empty"><div class="icon">&#x1F50D;</div><p>No items found</p></div>';
+      return;
+    }
 
-    <figure>
-      <img
-        src="https://placehold.co/600x200/4a3728/faf6f0?text=Sample+Image"
-        alt="Placeholder image with brown background and cream text reading Sample Image"
-      />
-      <figcaption>This is a figure caption describing the image above.</figcaption>
-    </figure>
-
-    <h3>Audio</h3>
-    <audio controls>
-      <source src="sample.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
-
-    <h3>Video</h3>
-    <video controls width="320">
-      <source src="sample.mp4" type="video/mp4" />
-      Your browser does not support the video element.
-    </video>
-  </section>
-
-  <section id="table">
-    <h2>Table</h2>
-
-    <table>
-      <caption>Sample Students Table</caption>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Subject</th>
-          <th>Grade</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Alice</td><td>Math</td><td>A</td></tr>
-        <tr><td>Bob</td><td>Science</td><td>B+</td></tr>
-        <tr><td>Charlie</td><td>History</td><td>A-</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section id="form">
-    <h2>Form</h2>
-
-    <form>
-      <fieldset>
-        <legend>Personal Information</legend>
-
-        <div style="margin-bottom:12px">
-          <label for="name">Full Name:</label>
-          <input type="text" id="name" name="name" />
+    grid.innerHTML = items.map(f => `
+      <div class="card-menu" onclick="openModal(${f.id})">
+        <img src="${images[f.name]}" alt="${f.name}" loading="lazy" />
+        <div class="body">
+          <h3>${f.name}</h3>
+          <div class="cuisine">${f.cuisine}</div>
+          <div class="sizes">${f.sizes.map(s => '<span>' + s.name + ' \u0E3F' + s.price + '</span>').join('')}</div>
         </div>
+      </div>
+    `).join("");
+  }
 
-        <div style="margin-bottom:12px">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" />
-        </div>
+  function openModal(id) {
+    const f = menu.find(i => i.id === id);
+    if (!f) return;
+    document.getElementById("modalImg").src = images[f.name];
+    document.getElementById("modalImg").alt = f.name;
+    document.getElementById("modalName").textContent = f.name;
+    document.getElementById("modalCuisine").textContent = f.cuisine + (f.vegetarian ? " \u2022 Vegetarian" : "");
+    document.getElementById("modalDetail").innerHTML = f.sizes.map(s =>
+      '<div class="row"><span class="label">' + s.name + '</span><span class="value">\u0E3F' + s.price + '</span></div>'
+    ).join("");
+    document.getElementById("modalIngredients").innerHTML =
+      '<p>Ingredients</p><div class="tags">' +
+      f.ingredients.map(i => '<span>' + i + '</span>').join("") +
+      '</div>';
+    document.getElementById("overlay").classList.add("open");
+  }
 
-        <div style="margin-bottom:12px">
-          <label for="age">Age:</label>
-          <input type="number" id="age" name="age" />
-        </div>
+  function closeModal() {
+    document.getElementById("overlay").classList.remove("open");
+  }
 
-        <div style="margin-bottom:12px">
-          <label for="country">Country:</label>
-          <select id="country" name="country">
-            <option value="">-- Select --</option>
-            <option value="jp">Japan</option>
-            <option value="us">United States</option>
-            <option value="uk">United Kingdom</option>
-          </select>
-        </div>
-
-        <div style="margin-bottom:12px">
-          <label for="message" style="vertical-align:top">Message:</label>
-          <textarea id="message" name="message" rows="4"></textarea>
-        </div>
-
-        <div style="margin-left:124px">
-          <button type="submit">Submit</button>
-        </div>
-      </fieldset>
-    </form>
-  </section>
-
-</main>
-
-<footer>
-  <p><small>&copy; 2026 HTML Tags Demo. Built for learning.</small></p>
-</footer>
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+  document.getElementById("searchInput").addEventListener("input", render);
+  render();
+</script>
 
 </body>
 </html>
